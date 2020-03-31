@@ -8,6 +8,7 @@ class Scraper:
         super().__init__()
     
     def scrapUrl(self, url):
+        print(url)
         html = requests.get(url, headers=const.headers)
         soup = bs4.BeautifulSoup(html.text, features="html.parser")
         return soup
