@@ -1,5 +1,6 @@
 from config import constantes as const
 import pandas as pd
+from config import config as cnf
 
 class Extractor:
 
@@ -28,6 +29,9 @@ class Extractor:
             except KeyError:
                 if key == None:
                     key = "Autres"
+            if key == "Prix approximatif" and " EUR" not in " ".join(td.text.strip().split()):
+                resultat[key] = None
+            else:
                 resultat[key] = " ".join(td.text.strip().split())
         return resultat
 
@@ -118,6 +122,15 @@ class Extractor:
             bgColor = htmlBgColor.get("style").split(";")[1].strip()
             benchmarkTelephone[dictLegende[bgColor]] = benchmarkScore
         elif "blue" in htmlBgColor["class"] and "h" in benchmarkScore:
+            try:
+                benchmarkScore = benchmarkScore[:benchmarkScore.index(" min")]
+            except:
+                benchmarkScore = benchmarkScore[:benchmarkScore.index("(")]
+            benchmarkScore = benchmarkScore.split("h ")
+            try:
+                benchmarkScore = int(benchmarkScore[0]) * 60 + int(benchmarkScore[1])
+            except:
+                benchmarkScore = int(benchmarkScore[0]) * 60
             benchmarkTelephone["Durée batterie"] = benchmarkScore
         elif "blue" in htmlBgColor["class"]:
             benchmarkTelephone["Temps chargement"] = benchmarkScore

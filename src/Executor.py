@@ -30,14 +30,15 @@ class Executor:
             dfList = map(self.traitementTelephoneInfo, anneeTelephoneList)
             allData = pd.concat(list(dfList))
             
-            return allData
+            return allData.set_index("Nom")  
         elif url == "https://www.phonearena.com/phones/benchmarks":
             htmlComplet = self.scraper.scrapUrl(url)
             benchmarksHtml = htmlComplet.find_all("div", {"class": "widget-benchmark"})
             performanceDF, DureeBatterieDF, ChargementBatterieDF = self.extractor.extractBenchmarkDF(benchmarksHtml)
             tmpDF = pd.merge(DureeBatterieDF, ChargementBatterieDF, on="Nom", how="outer")
             result = pd.merge(performanceDF, tmpDF, on="Nom", how="outer")
-            return result
+            
+            return result.set_index("Nom")
     
 
     # http://phonesdata.com/fr/smartphones
