@@ -80,20 +80,8 @@ class MainTest(unittest.TestCase):
         resultatObtenu = extractor.extractBenchmarkLegende(html)
         # THEN : vérifier les résultats
         self.assertEqual(resultatObtenu, resultatAttendu)
-    
-    def test_2plus2(self):
-        self.assertEqual(2+2, 4)
-    
-    def test_2moins2(self):
-        self.assertEqual(1-1, 0)
 
-    def test_2fois2(self):
-        self.assertEqual(2*2, 4)
-
-    def test_2div2(self):
-        self.assertEqual(2/2, 1)
-
-    """def test_lancerTraitement(self):
+    def test_lancerTraitement(self):
         # GIVEN : préparer les données du test
         scraper = Scraper()
         extractor = Extractor()
@@ -104,7 +92,7 @@ class MainTest(unittest.TestCase):
         # WHEN : exécuter la fonction testée
         resultatObtenu = executor.lancerTraitement(url).sort_index(inplace=True)
         # THEN : vérifier les résultats
-        self.assertEqual(resultatObtenu, resultatAttendu)"""
+        self.assertEqual(resultatObtenu, resultatAttendu)
     
     
 
