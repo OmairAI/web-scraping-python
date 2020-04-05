@@ -1,11 +1,14 @@
-from config import constantes as const
 import pandas as pd
+import json
 from config import config as cnf
 
 class Extractor:
 
+    marquesVise = None
+
     def __init__(self):
         super().__init__()
+        self.marquesVise = json.loads(cnf.config["DEFAULT"]["marquesVise"])
     
     def extractMarque(self, marqueUrl):
         marqueUrlSplit = marqueUrl.split("/")
@@ -17,6 +20,7 @@ class Extractor:
         h1NomTelephone = divProductPage.find("h1").text
         nomTelephone = h1NomTelephone[:h1NomTelephone.index(" Fiche")]
         nomTelephone = " ".join(nomTelephone.strip().split())
+        cnf.logger.debug("Nom téléphone récupérée : {0}".format(str(nomTelephone)))
         return nomTelephone
     
     def extraireInfo(self, allElement):
@@ -38,12 +42,18 @@ class Extractor:
     def extractInfoFromDivId(self, html, divId):
         table = html.find("table", {"id": divId})
         infoId = self.extraireInfo(table.find_all("td"))
+        cnf.logger.debug("Informations récupérées depuis le div avec l'id {0} : {1}".format(str(divId), str(infoId)))
         return infoId
 
     def extractUrlParMarque(self, p):
         marqueUrl = p.find("a").get("href")
-        if self.extractMarque(marqueUrl) in const.marquesVise:
+        marque = self.extractMarque(marqueUrl)
+        cnf.logger.debug("Marque récupérée : {0}".format(str(marque)))
+        if marque in self.marquesVise:
+            cnf.logger.debug("URL marque téléphone récupérée : {0}".format(str(marqueUrl)))
             return marqueUrl
+        else:
+            cnf.logger.debug("{0} n'est pas dans les marques visées : ne sera pas traitée".format(str(marque)))
     
     def extractUrlParAnneeMarque(self, html, marqueUrl):
         anneeMarqueUrlList = []
@@ -53,6 +63,7 @@ class Extractor:
             if (urlAnneeMarque.startswith(marqueUrl + "#2") or urlAnneeMarque.startswith(marqueUrl + "2")) and len(urlAnneeMarque.replace(marqueUrl, "")) == 5:
                 if urlAnneeMarque not in anneeMarqueUrlList:
                     anneeMarqueUrlList.append(urlAnneeMarque)
+                    cnf.logger.debug("URL marque - année téléphone récupérée : {0}".format(str(urlAnneeMarque)))
         return anneeMarqueUrlList
 
     def extractUrlTelephoneParAnnee(self, htmlTelephoneAnnee):
@@ -87,6 +98,7 @@ class Extractor:
                 dictLegende[blockHtml.get("style")] = libelleLegende
         except:
             pass
+        cnf.logger.debug("Légende récupérée : {0}".format(str(dictLegende)))
         return dictLegende
 
     def concatDataframe(self, htmlBgColor, performanceDF, DureeBatterieDF, ChargementBatterieDF, benchmarkTelephoneDF, cpt):
@@ -104,7 +116,7 @@ class Extractor:
             benchmarkTelephone = {}
             benchmarkTelephoneDF = pd.DataFrame()
             nomTelephone = row.find("div", {"class": "name"})
-            if nomTelephone.text.split()[0].lower() in const.marquesVise:
+            if nomTelephone.text.split()[0].lower() in self.marquesVise:
                 benchmarkTelephone["Nom"] = nomTelephone.text.strip()
                 scores = row.find_all("div", {"class": "score"})
                 for score in scores:
@@ -134,6 +146,7 @@ class Extractor:
             benchmarkTelephone["Durée batterie"] = benchmarkScore
         elif "blue" in htmlBgColor["class"]:
             benchmarkTelephone["Temps chargement"] = benchmarkScore
+        cnf.logger.debug("Benchmark téléphone récupérée : {0}".format(str(benchmarkTelephone)))
         return benchmarkTelephone
     
     def extractBenchmarkDF(self, benchmarksHtml):

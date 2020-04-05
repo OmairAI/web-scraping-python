@@ -19,11 +19,11 @@ def initialiseLog():
     logger.setLevel(logging.DEBUG)
 
     timestampDebut = datetime.now().strftime("%Y%m%d_%H%M%S")
-    nomFichierLog = str(timestampDebut) + "_scrapping.log"
+    nomFichierLog = config["LOG"]["cheminLog"] + str(timestampDebut) + "_" + config["LOG"]["nomFichierLog"]
  
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
     file_handler = RotatingFileHandler(nomFichierLog, 'w', 100000000, 1)
-    file_handler.setLevel(logging.DEBUG)
+    file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
     

@@ -1,7 +1,6 @@
 import requests
 import bs4
 import pandas as pd
-from config import constantes as const
 
 class Executor:
 

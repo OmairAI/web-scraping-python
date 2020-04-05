@@ -1,11 +1,17 @@
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
+from itertools import repeat
+from config import config as cnf
 
 class Analyze:
 
     def __init__(self):
         super().__init__()
+
+    def genereGraph(self, graph, finalDF):
+        cnf.logger.info("Génération du graphique {0}...".format(str(graph.__name__)))
+        return graph(finalDF)
     
     def moyennePrixParAnGraph(self, finalDF):
         analyseDF = finalDF[["Date de sortie", "Prix approximatif"]].dropna()
@@ -21,6 +27,7 @@ class Analyze:
         
         fig = px.line(moyennePrixParAn, x=moyennePrixParAn.index, y="Prix approximatif", title="Évolution du prix des smartphones au fil des années")
         fig.update_layout(xaxis_title="Années", yaxis_title="Prix (en euros)")
+        cnf.logger.info("Génération réussie")
         return fig
     
     def moyenneDureeBatterieParAnGraph(self, finalDF):
@@ -36,6 +43,7 @@ class Analyze:
         
         fig = px.line(moyenneDureeBatterieParAn, x=moyenneDureeBatterieParAn.index, y="Durée batterie", title="Évolution de l'autonomie des smartphones au fil des années")
         fig.update_layout(xaxis_title="Années", yaxis_title="Autonomie (en minutes)")
+        cnf.logger.info("Génération réussie")
         return fig
     
     def moyenneTempsChargementParAnGraph(self, finalDF):
@@ -51,6 +59,7 @@ class Analyze:
         
         fig = px.line(moyenneTempsChargementParAn, x=moyenneTempsChargementParAn.index, y="Temps chargement", title="Évolution de la durée de chargement des smartphones au fil des années")
         fig.update_layout(xaxis_title="Années", yaxis_title="Durée chargement (en minutes)")
+        cnf.logger.info("Génération réussie")
         return fig
 
     def repartitionPrixSmartphoneGraph(self, finalDF):
@@ -58,28 +67,27 @@ class Analyze:
         analyseDF["Prix approximatif"] = analyseDF["Prix approximatif"].str.replace(" EUR", "")
         analyseDF[["Prix approximatif"]] = analyseDF[["Prix approximatif"]].astype(float)
 
+        borneInf = [1, 101, 201, 301, 401, 501, 601, 701, 801, 901, 1001, 1101, 1201]
+        borneSup = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 9999]
+
         repartitionPrixSmartphoneJson = {}
-        repartitionPrixSmartphoneJson["De 1€ à 101€"] = (analyseDF["Prix approximatif"].between(1, 100).value_counts(normalize=True) * 100)[True]
-        repartitionPrixSmartphoneJson["De 101€ à 200€"] = (analyseDF["Prix approximatif"].between(101, 200).value_counts(normalize=True) * 100)[True]
-        repartitionPrixSmartphoneJson["De 201€ à 300€"] = (analyseDF["Prix approximatif"].between(201, 300).value_counts(normalize=True) * 100)[True]
-        repartitionPrixSmartphoneJson["De 301€ à 400€"] = (analyseDF["Prix approximatif"].between(301, 400).value_counts(normalize=True) * 100)[True]
-        repartitionPrixSmartphoneJson["De 401€ à 500€"] = (analyseDF["Prix approximatif"].between(401, 500).value_counts(normalize=True) * 100)[True]
-        repartitionPrixSmartphoneJson["De 501€ à 600€"] = (analyseDF["Prix approximatif"].between(501, 600).value_counts(normalize=True) * 100)[True]
-        repartitionPrixSmartphoneJson["De 601€ à 700€"] = (analyseDF["Prix approximatif"].between(601, 700).value_counts(normalize=True) * 100)[True]
-        repartitionPrixSmartphoneJson["De 701€ à 800€"] = (analyseDF["Prix approximatif"].between(701, 800).value_counts(normalize=True) * 100)[True]
-        repartitionPrixSmartphoneJson["De 801€ à 900€"] = (analyseDF["Prix approximatif"].between(801, 900).value_counts(normalize=True) * 100)[True]
-        repartitionPrixSmartphoneJson["De 901€ à 1000€"] = (analyseDF["Prix approximatif"].between(901, 1000).value_counts(normalize=True) * 100)[True]
-        repartitionPrixSmartphoneJson["De 1001€ à 1100€"] = (analyseDF["Prix approximatif"].between(1001, 1100).value_counts(normalize=True) * 100)[True]
-        repartitionPrixSmartphoneJson["De 1101€ à 1200€"] = (analyseDF["Prix approximatif"].between(1101, 1200).value_counts(normalize=True) * 100)[True]
-        repartitionPrixSmartphoneJson["Plus de 1200€"] = (analyseDF["Prix approximatif"].between(1201, 99999).value_counts(normalize=True) * 100)[True]
-        
+        for i in range(len(borneInf)):
+            repartitionPrixSmartphoneJson.update(self.getPourcentagePrice(analyseDF, repartitionPrixSmartphoneJson, borneInf[i], borneSup[i]))
+
         repartitionPrixSmartphone = pd.DataFrame(repartitionPrixSmartphoneJson, index=["Pourcentage"]).transpose()
 
-        print(repartitionPrixSmartphone)
-        #fig = px.pie(repartitionPrixSmartphone, values="Pourcentage", names=repartitionPrixSmartphone.index, title="Répartition des prix des smartphones")
         fig = px.bar(repartitionPrixSmartphone, x=repartitionPrixSmartphone.index, y="Pourcentage", title="Répartition des prix des smartphones")
         fig.update_layout(xaxis_title="Tranche de prix", yaxis_title="Pourcentage (%)")
+        cnf.logger.info("Génération réussie")
         return fig
+
+    def getPourcentagePrice(self, df, repartitionPrixSmartphoneJson, borneInf, borneSup):
+        key = "De {0}€ à {1}€".format(borneInf, borneSup)
+        try:
+            repartitionPrixSmartphoneJson[key] = (df["Prix approximatif"].between(borneInf, borneSup).value_counts(normalize=True) * 100)[True]
+        except KeyError:
+            repartitionPrixSmartphoneJson[key] = 0
+        return repartitionPrixSmartphoneJson
 
     def repartitionOSGraph(self, finalDF):
         analyseDF = finalDF[["Système d'exploitation (OS)"]].dropna()
@@ -90,4 +98,5 @@ class Analyze:
         
         fig = px.pie(repartitionOSGraph, values="Système d'exploitation (OS)", names=repartitionOSGraph.index, title="Répartition des systèmes d'exploitation des smartphones")
         fig.update_traces(textposition='inside')
+        cnf.logger.info("Génération réussie")
         return fig

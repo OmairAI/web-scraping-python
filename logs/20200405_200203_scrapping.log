@@ -1,0 +1,77 @@
+2020-04-05 20:02:03,618 - INFO - Début du traitement
+2020-04-05 20:02:03,619 - INFO - Début de l'opération : scrapData
+2020-04-05 20:02:03,619 - INFO - Scrapping de l'URL : http://phonesdata.com/fr/smartphones/
+2020-04-05 20:02:04,585 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/
+2020-04-05 20:02:05,181 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/
+2020-04-05 20:02:05,866 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/#2019
+2020-04-05 20:02:06,557 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/2018/
+2020-04-05 20:02:07,128 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/2017/
+2020-04-05 20:02:07,745 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/2016/
+2020-04-05 20:02:08,699 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/2015/
+2020-04-05 20:02:09,564 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/2014/
+2020-04-05 20:02:10,241 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/2013/
+2020-04-05 20:02:11,110 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/2012/
+2020-04-05 20:02:11,766 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/2011/
+2020-04-05 20:02:12,376 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/2010/
+2020-04-05 20:02:12,592 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/2009/
+2020-04-05 20:02:13,225 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/2008/
+2020-04-05 20:02:13,794 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/2007/
+2020-04-05 20:02:14,353 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/#2019
+2020-04-05 20:02:14,972 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/2018/
+2020-04-05 20:02:15,533 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/2017/
+2020-04-05 20:02:16,078 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/2016/
+2020-04-05 20:02:16,664 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/2015/
+2020-04-05 20:02:17,287 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/2014/
+2020-04-05 20:02:17,930 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-11-5458277/
+2020-04-05 20:02:18,796 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-11-pro-5458276/
+2020-04-05 20:02:19,660 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-11-pro-max-5458275/
+2020-04-05 20:02:20,460 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-xr-5395/
+2020-04-05 20:02:21,337 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-xs-5397/
+2020-04-05 20:02:22,160 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-xs-max-5396/
+2020-04-05 20:02:22,942 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-8-4895/
+2020-04-05 20:02:23,714 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-8-plus-4894/
+2020-04-05 20:02:24,478 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-x-4896/
+2020-04-05 20:02:25,275 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-7-4361/
+2020-04-05 20:02:26,030 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-7-plus-4362/
+2020-04-05 20:02:26,920 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-se-4098/
+2020-04-05 20:02:27,786 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-6s-3254/
+2020-04-05 20:02:28,538 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-6s-plus-3255/
+2020-04-05 20:02:29,433 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-6-2058/
+2020-04-05 20:02:30,396 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-6-plus-2706/
+2020-04-05 20:02:31,253 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-5c-103/
+2020-04-05 20:02:32,275 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-5s-104/
+2020-04-05 20:02:33,090 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-5-102/
+2020-04-05 20:02:34,061 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-4-cdma-99/
+2020-04-05 20:02:34,811 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-4s-101/
+2020-04-05 20:02:35,447 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-4-100/
+2020-04-05 20:02:36,373 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-3gs-98/
+2020-04-05 20:02:37,014 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-3g-97/
+2020-04-05 20:02:37,644 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/apple/iphone-96/
+2020-04-05 20:02:38,347 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/7-5808/
+2020-04-05 20:02:39,178 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/7-pro-5807/
+2020-04-05 20:02:39,935 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/7-pro-5g-5806/
+2020-04-05 20:02:40,855 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/7t-5458362/
+2020-04-05 20:02:41,821 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/7t-pro-5458372/
+2020-04-05 20:02:42,551 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/7t-pro-5g-mclaren-5458402/
+2020-04-05 20:02:43,357 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/6-5241/
+2020-04-05 20:02:44,162 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/6t-5471/
+2020-04-05 20:02:45,054 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/6t-mclaren-5511/
+2020-04-05 20:02:45,842 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/5-4829/
+2020-04-05 20:02:46,620 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/5t-5004/
+2020-04-05 20:02:48,020 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/3-4245/
+2020-04-05 20:02:48,367 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/3t-4522/
+2020-04-05 20:02:49,222 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/2-3002/
+2020-04-05 20:02:50,230 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/x-3738/
+2020-04-05 20:02:51,350 - INFO - Scrapping de l'URL : https://phonesdata.com/fr/smartphones/oneplus/one-2160/
+2020-04-05 20:02:52,166 - INFO - Scrapping de l'URL : https://www.phonearena.com/phones/benchmarks
+2020-04-05 20:03:08,092 - INFO - Génération du graphique moyennePrixParAnGraph...
+2020-04-05 20:03:09,065 - INFO - Génération réussie
+2020-04-05 20:03:09,370 - INFO - Génération du graphique moyenneDureeBatterieParAnGraph...
+2020-04-05 20:03:09,855 - INFO - Génération réussie
+2020-04-05 20:03:10,120 - INFO - Génération du graphique moyenneTempsChargementParAnGraph...
+2020-04-05 20:03:10,591 - INFO - Génération réussie
+2020-04-05 20:03:10,797 - INFO - Génération du graphique repartitionPrixSmartphoneGraph...
+2020-04-05 20:03:11,128 - INFO - Génération réussie
+2020-04-05 20:03:11,349 - INFO - Génération du graphique repartitionOSGraph...
+2020-04-05 20:03:11,706 - INFO - Génération réussie
+2020-04-05 20:03:11,924 - INFO - Fin du traitement

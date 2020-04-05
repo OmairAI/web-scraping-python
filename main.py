@@ -27,17 +27,22 @@ def main(args):
     analyzer = Analyze()
     executor = Executor(scraper, extractor, analyzer)
 
-    finalDF = scrapData(args["save"], executor)
-    finalDF = readFromCSV("/Users/omair/Desktop/M1/ProgAv2/output/finalDF.csv", "\t", args["read"])
+    if (args["save"] == "True"):
+        finalDF = getDataDF(scrapData, (executor, getFichierJSON()))
+    elif args["read"] == "True":
+        finalDF = getDataDF(readFromCSV, (cnf.config["CSV"]["pathRead"], "\t"))
+        
     analyseData(analyzer, finalDF, args["analyse"])
 
+def getDataDF(operation, args):
+    cnf.logger.info("Début de l'opération : {0}".format(operation.__name__))
+    return operation(*args)
 
 def saveToCSV(df, path, sep):
     df.to_csv(path, sep=sep)
 
-def readFromCSV(path, sep, read):
-    if read == 'True':
-        return pd.read_csv(path, sep=sep)
+def readFromCSV(path, sep):
+    return pd.read_csv(path, sep=sep)
 
 def mergeListDF(listDF, colonne, how):
     tmpDF = pd.merge(listDF[0], listDF[1], on=colonne, how=how)
@@ -46,19 +51,17 @@ def mergeListDF(listDF, colonne, how):
 
 def analyseData(analyzer, finalDF, analyse):
     if analyse == 'True':
-        analyzer.moyennePrixParAnGraph(finalDF).show()
-        analyzer.moyenneDureeBatterieParAnGraph(finalDF).show()
-        analyzer.moyenneTempsChargementParAnGraph(finalDF).show()
-        analyzer.repartitionPrixSmartphoneGraph(finalDF).show()
-        analyzer.repartitionOSGraph(finalDF).show()
+        analyzer.genereGraph(analyzer.moyennePrixParAnGraph, finalDF).show()
+        analyzer.genereGraph(analyzer.moyenneDureeBatterieParAnGraph, finalDF).show()
+        analyzer.genereGraph(analyzer.moyenneTempsChargementParAnGraph, finalDF).show()
+        analyzer.genereGraph(analyzer.repartitionPrixSmartphoneGraph, finalDF).show()
+        analyzer.genereGraph(analyzer.repartitionOSGraph, finalDF).show()
 
-def scrapData(scrap, executor):
-    if scrap == 'True':
-        urls = getFichierJSON()
-        allDataList = list(map(traitementUrl, urls["url"], repeat(executor)))
-        finalDF = mergeListDF(allDataList, "Nom", "outer")
-        saveToCSV(finalDF, "/Users/omair/Desktop/M1/ProgAv2/output/finalDF.csv", "\t")
-        return finalDF
+def scrapData(executor, urls):
+    allDataList = list(map(traitementUrl, urls["url"], repeat(executor)))
+    finalDF = mergeListDF(allDataList, "Nom", "outer")
+    saveToCSV(finalDF, cnf.config["CSV"]["pathSave"], "\t")
+    return finalDF
 
     
 if __name__ == "__main__":
@@ -68,3 +71,4 @@ if __name__ == "__main__":
     
     cnf.logger.info("Début du traitement")
     main(args)
+    cnf.logger.info("Fin du traitement")
